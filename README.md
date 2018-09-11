@@ -21,7 +21,7 @@ The reader take a CSV file that contain the actual path to the skeleton file, ac
 
 To generate those CSV files call the following for ntu dataset:
 ```
-python split_ntu_data.py -i <path>/nturgb+d_skeletons/ -o <path to your output>
+python src/split_ntu_data.py -i <path>/nturgb+d_skeletons/ -o <path to your output>
 ```
 And `split_h36m_data.py` for human3.6m. Feel free to update the script for your need.
 
@@ -30,7 +30,7 @@ For training simply call `train_hpgan.py`, the needed parameters are documented.
 
 Here an example:
 ```
-python train_gan.py -train <path>/train_map.csv -out <path>/results -epochs 10000 -dataset human36m -ccf <path>/cameras.h5 -dnf <path>/data_statistics.h5
+python src/train_hpgan.py -train <path>/train_map.csv -out <path>/results -epochs 10000 -dataset human36m -ccf <path>/cameras.h5 -dnf <path>/data_statistics.h5
 ```
 Here part of the spewed output during training:
 ```
