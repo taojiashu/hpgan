@@ -60,7 +60,7 @@ def main(args):
     body_inf = source.create_body()
 
     # Log training information
-    logging.info("Dataset: {}, Generator: {}".format(dataset, args.gan_type))
+    #logging.info("Dataset: {}, Generator: {}".format(dataset))
 
     # create the visualizer
     skeleton2D = Skeleton2D(sensor, body_inf)
