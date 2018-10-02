@@ -1,6 +1,6 @@
 import tensorflow as tf
 from keras.applications import vgg16
-#from . import vgg
+
 
 def build(inputs, output_dims, model_name):
     '''
@@ -15,6 +15,7 @@ def build(inputs, output_dims, model_name):
         An instance of the model.
     '''
     return vgg16.VGG16(inputs, output_dims)
+
 
 def read_model(model_path):
     '''
