@@ -1,3 +1,4 @@
+import argparse
 import logging
 import os
 import time
@@ -6,10 +7,10 @@ import tensorflow as tf
 
 from braniac import nn as nn
 from braniac.format import SourceFactory
+from braniac.models.body import NNDiscriminator, SequenceToSequenceGenerator
+from braniac.readers.body import SequenceBodyReader
 from braniac.utils import DataPreprocessing, NormalizationMode
 from braniac.viz import Skeleton2D
-from braniac.readers.body import SequenceBodyReader
-from braniac.models.body import NNDiscriminator, SequenceToSequenceGenerator
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Filter out all logs.
 
@@ -107,7 +108,7 @@ def main(args):
                                     g_z,
                                     input_sequence_length,
                                     output_sequence_length,
-                                    reverse_input=True)
+                                    reverse_input=False)
     d_fake_inputs = tf.concat([g_inputs, g.output], axis=1)
     d_fake = NNDiscriminator(d_fake_inputs, inputs_depth, sequence_length, reuse=True)
 
@@ -132,7 +133,7 @@ def main(args):
 
     # Gradient penalty
     def gradient_penalty():
-        alpha = tf.random_uniform([], 0.0, 1.0)
+        alpha = tf.random_uniform([], 0.0, 1.0, seed=1000)
         d_inputs_hat = alpha * d_inputs + (1 - alpha) * d_fake_inputs
         d_outputs_hat = NNDiscriminator(d_inputs_hat, inputs_depth, sequence_length, reuse=True).output
         gradients = tf.gradients(d_outputs_hat, d_inputs_hat)[0]

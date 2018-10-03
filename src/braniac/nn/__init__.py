@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
+
 def one_hot(indices, depth, axis=-1, dtype=np.float32):
     ''' Compute one hot from indices at a specific axis '''
 
@@ -106,6 +107,8 @@ def generate_random(rand_type, params, shape):
     '''
     Generate a random number with the specified shape.
     '''
+    np.random.seed(1000)
+
     if rand_type == 'normal':
         return np.random.normal(params['mean'], params['std'], size=shape)
     elif rand_type == 'uniform':

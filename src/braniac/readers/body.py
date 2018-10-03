@@ -11,7 +11,7 @@ class SequenceBodyReader(object):
     def __init__(self, map_file, sequence_length, dataset, skip_frame=0, 
                  data_preprocessing=None, random_sequence=False, label_count=None, 
                  in_memory=True, camera_data_file=None, is_training=True,
-                 seed=None):
+                 seed=1000):
         '''
         Initialize SequenceBodyReader which return a batch of sequences of
         Body packed in a numpy array.
