@@ -1,5 +1,6 @@
 import tensorflow as tf
 from keras.applications import vgg16
+from keras.applications import resnet50
 
 
 def build(inputs, output_dims, model_name):
@@ -14,7 +15,8 @@ def build(inputs, output_dims, model_name):
     Return:
         An instance of the model.
     '''
-    return vgg16.VGG16(inputs, output_dims)
+    # return vgg16.VGG16(inputs, output_dims)
+    return resnet50.ResNet50(inputs, output_dims)
 
 
 def read_model(model_path):

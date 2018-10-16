@@ -80,7 +80,7 @@ def main(args):
                                                dataset,
                                                skip_frame=1,
                                                data_preprocessing=data_preprocessing,
-                                               random_sequence=True)
+                                               random_sequence=False)
     else:
         raise ValueError("Invalid dataset value.")
 
@@ -341,7 +341,7 @@ if __name__ == "__main__":
                         "--dataset_name",
                         type=str,
                         help="Provide the name of the dataset (nturgbd or human36m).",
-                        default="nturgbd")
+                        default="human36m")
 
     parser.add_argument("-epochs",
                         "--max_epochs",

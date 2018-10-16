@@ -473,11 +473,11 @@ class NNGenerator(object):
 
 class SequenceToSequenceGenerator(object):
     '''
-    GAN generator network that predict future skeleton poses using sequernce to sequence network.
+    GAN generator network that predict future skeleton poses using sequence to sequence network.
     '''
     def __init__(self, inputs, inputs_depth, z, input_sequence_length, output_sequence_length, 
                  cell_type='gru', project_to_rnn_output=False, reverse_input=False,
-                 use_attention=False, use_residual=False,
+                 use_attention=False, use_residual=True,
                  bias_initializer=tf.constant_initializer(0.), kernel_initializer=tf.truncated_normal_initializer(stddev=0.001),
                  reuse=False):
         '''
